@@ -66,9 +66,13 @@ nuevaLongitud = frutas.unshift('Fresa')
 
 
 // Eliminar el primer elemento de un Array
+// El método shift() elimina el primer elemento del array
+// y lo retorna. Este método modifica la longitud del array.
 primero = frutas.shift()
 // console.log(frutas)
 //TODO ["Manzana", "Banana"]
+console.log(primero)
+//TODO "Fresa"
 
 
 //************************************************

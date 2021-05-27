@@ -8,6 +8,7 @@ frutas.push('Banana', 'Manzana', 'Pera')
 //*****************************
 
 
+//? length
 // Agregando un elemento a una posicion inexistente 
 frutas[5] = 'Fresa'
 // console.log(frutas)
@@ -19,7 +20,6 @@ frutas[5] = 'Fresa'
 // console.log(frutas.length) // 6
 
 
-//*****************************
 
 
 // Si se aumenta el valor de length 
@@ -29,16 +29,11 @@ frutas.length = 10
 // console.log(frutas[8]); // undefined
 
 
-//*****************************
-
-
 //? Si se disminuye la propiedad length pueden eliminarse elementos
 frutas.length = 2
 // console.log(frutas)
 //TODO ["Banana", "Manzana"]
 
-
-//*****************************
 
 
 function printEntries(arr){
@@ -61,14 +56,14 @@ arr.length = 5
 
 //*****************************
 
-
+//? isArray()
 // Apara saber si es un arreglo 
 // console.log(Array.isArray(arr))
 
 
 //*****************************
 
-
+//? express operator
 // Concatenar un arreglo con otro
 let arr1 = ['a', 'b', 'c']
 let arr2 = ['d', 'e', 'f']
@@ -80,6 +75,7 @@ let arr3 = [...arr1, ...arr2]
 //*****************************
 
 
+//? find()
 // El método find() devuelve el valor 
 // del primer elemento del array que 
 // cumple la función de prueba proporcionada.
@@ -108,9 +104,8 @@ let petsFind = pets.includes('Cotorro')
 // console.log(petsFind) //TODO true
 
 
-//*****************************
 
-
+//? find()
 //? Encontrar un objeto en un array por una
 //? de sus propiedades
 // arr.find(callback(element[, index[, array]])[, thisArg])
@@ -222,6 +217,7 @@ function logArrayElements(element, index, array) {
 // a[3] = 9
 
 
+
 //? si el array se modifica durante la iteracion
 //? otros elementos pueden ser omitidos
 // callback(currentValue, index, array)
@@ -236,12 +232,19 @@ words.forEach(function (word) {
 
 
 
+//*****************************
+
+
 
 //? includes()
 // arr.includes(searchElement[, fromIndex])
 let arrIncludes = ['a', 'b', 'c']
 // arrIncludes.includes('c', 2) // ture
 // [1, 2, 3].includes(2);       // true
+
+
+
+//*****************************
 
 
 
@@ -504,3 +507,490 @@ plants.pop();
 
 
 //? push()
+// El método push() añade uno o más elementos al final
+// de un array y devuelve la nueva longitud del array.
+// arr.push(element1[, ...[, elementN]])
+
+//*  Uniendo dos arrays
+let vegetables2 = ['parsnip', 'potato'];
+let moreVegs = ['celery', 'beetroot'];
+
+// Merge the second array into the first one
+// Equivalent to vegetables2.push('celery', 'beetroot');
+Array.prototype.push.apply(vegetables2, moreVegs);
+// console.log(vegetables2); // ['parsnip', 'potato', 'celery', 'beetroot']
+
+
+
+//*****************************
+
+
+
+//? reduce()
+// El método reduce() ejecuta una función reductora sobre cada
+// elemento de un array, devolviendo como resultado un único valor.
+// arr.reduce(callback(acumulador, valorActual[, índice[, array]])[, valorInicial])
+const array2 = [1, 2, 3, 4];
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+// 1 + 2 + 3 + 4
+// console.log(array2.reduce(reducer));
+//TODO expected output: 10
+
+// 5 + 1 + 2 + 3 + 4
+// console.log(array2.reduce(reducer, 5));
+//TODO expected output: 15
+
+[0,1,2,3,4].reduce(function(valorAnterior, valorActual, indice, vector) {
+    // console.log('ValorAnterior: ' + valorAnterior + ' valorActual: ' + valorActual + ' Indice: ' + indice)
+    return valorAnterior + valorActual;
+});
+
+
+
+// Si proporcionamos un valor inicial:
+const arrayReduce = [0,1,2,3,4].reduce(function(valorAnterior, valorActual, indice, vector) {
+    // console.log('ValorAnterior: ' + valorAnterior + ' valorActual: ' + valorActual + ' Indice: ' + indice)
+    return valorAnterior + valorActual;
+}, 10);
+// console.log(arrayReduce)
+
+
+
+const integrado = [[0,1], [2,3], [4,5]].reduce(function (a,b) {
+    return a.concat(b);
+}) 
+// console.log(integrado)
+
+
+//*****************************
+
+//? reduceRight()
+// Aplica una función simultáneamente contra un acumulador y cada
+// elemento de un array (de derecha a izquierda) para reducirlo
+// a un único valor.
+// .reduceRight(function(valorPrevio, valorActual, indice, array)
+
+// La primera vez que se llama a la función, el valorPrevio y el
+// valorActual puede ser uno de los dos valores. Si se incluye un
+// valorInicial en la llamada a reduceRight, entonces el valorPrevio
+// será igual al valorInicial y el valorActual será igual al último
+// valor del array. Si no se incluye ningún valorInicial, entonces
+// el valorPrevio será igual al último valor del array y el valorActual
+// será igual al penúltimo valor.
+
+const reduceR = [0,1,2,3,4].reduceRight(function(valorPrevio, valorActual, indice, array){
+    // console.log('ValorAnterior: ' + valorPrevio + ' valorActual: ' + valorActual + ' Indice: ' + indice)
+    return valorPrevio + valorActual;
+});
+// console.log(reduceR)
+
+
+
+//*****************************
+
+
+//? reverse()
+// El método reverse() invierte el orden de los elementos
+// de un array in place. El primer elemento pasa a ser el
+// último y el último pasa a ser el primero.
+
+// El método reverse cruza los elementos del objeto matriz
+// invocados en su lugar, mutando la matriz, y retornando
+// una referencia a la misma.
+// array.reverse()
+const array8 = ['one', 'two', 'three'];
+// console.log('array8:', array8);
+//TODO expected output: "array8:" Array ["one", "two", "three"]
+
+const reversed = array8.reverse();
+// console.log('reversed:', reversed);
+//TODO expected output: "reversed:" Array ["three", "two", "one"]
+
+// Careful: reverse is destructive -- it changes the original array.
+// console.log('array8:', array8);
+//TODO expected output: "array8:" Array ["three", "two", "one"]
+
+
+
+//*****************************
+
+
+
+//? slice()
+// El método slice() devuelve una copia de una parte del
+// array dentro de un nuevo array empezando por inicio
+// hasta fin (fin no incluido). El array original no se modificará.
+//? arr.slice([inicio [, fin]])
+//* Parametros
+//TODO [inicio]
+//TODO Índice donde empieza la extracción. El primer elemento corresponde con el índice  0.
+//TODO Si el índice especificado es negativo, indica un desplazamiento desde el final del array. slice(-2)extrae los dos últimos elementos del array
+//TODO Si inicio es omitido el valor por defecto es 0.
+//TODO Si inicio es mayor a la longitud del array, se devuelve un array vacío.
+
+//TODO [fin]
+//TODO Índice  que marca el final de la extracción. slice extrae hasta, pero sin incluir el final.
+//TODO slice(1,4) extrae desde el segundo elemento hasta el cuarto  (los elementos con índices 1, 2,  y 3).
+//TODO Con un índice negativo, fin indica un desplazamiento desde el final de la secuencia. slice(2,-1) extrae desde el tercer hasta el penúltimo elemento en la secuencia.
+//TODO Si fin es omitido, slice extrae hasta el final de la secuencia (arr.length).
+//TODO Si fin es mayor a la longitud del array, slice extrae hasta el final de la secuencia (arr.length).
+//? [Retorno]Un nuevo array con los valores extraídos.
+
+//! RECORDEMOS QUE en los parametros reciben los indices
+const nombres = ['Rita', 'Pedro', 'Miguel', 'Ana', 'Vanesa']
+let masculinos = nombres.slice(0,2)
+// console.log(masculinos)
+// ['Pedro', ''Miguel]
+
+
+
+//*****************************
+
+
+//? some()
+// El método some() comprueba si al menos un elemento
+// del array cumple con la condición implementada por
+// la función proporcionada.
+// los elementos borrados no son visitados.
+// arr.some(callback(element[, index[, array]])[, thisArg])
+const array9 = [1, 2, 3, 4, 5]
+const even = (element) => element%2 === 0
+
+// console.log(array9.some(even))
+// true
+
+function isBiggerThan10(element, index, array) {
+    return element > 10;
+ }
+ [2, 5, 8, 1, 4].some(isBiggerThan10);  // false
+ [12, 5, 8, 1, 4].some(isBiggerThan10); // true
+ [2, 5, 8, 1, 4].some(elem => elem > 10);  // false
+ [12, 5, 8, 1, 4].some(elem => elem > 10); // true
+
+
+
+var fruits = ['apple', 'banana', 'mango', 'guava'];
+function checkAvailability(arr, val) {
+  return arr.some(function(arrVal) {
+    return val === arrVal;
+  });
+  checkAvailability(fruits, 'kela');   // false
+}
+checkAvailability(fruits, 'banana'); // true
+
+
+
+//*****************************
+
+//? sort()
+// El método sort() ordena los elementos de un arreglo
+// (array) localmente y devuelve el arreglo ordenado. 
+// La ordenación no es necesariamente estable. El modo 
+// de ordenación por defecto responde a la posición del 
+// valor del string de acuerdo a su valor Unicode.
+// arr.sort([compareFunction])
+
+// Si no se provee compareFunction, los elementos son
+// ordenados convirtiéndolos a strings y comparando la 
+// posición del valor Unicode de dichos strings. 
+// Por ejemplo, "Cherry" viene antes que "banana"  
+// (porque las mayúsculas van antes que las minúsculas en
+// la codificación Unicode) . En un ordenamiento numérico,
+// 9 está antes que 80, pero dado que los números son
+// convertidos a strings y ordenados según el valor Unicode,
+// el resultado será "80" antes que "9".
+
+
+const frutas2 = ['guindas', 'manzanas', 'bananas']
+frutas2.sort() // ['bananas', 'guindas', 'manzanas']
+
+const puntos = [1, 10, 2, 21]
+puntos.sort() // [1, 10, 2, 21]
+// Tenga en cuenta que 10 viene antes que 2
+// porque '10' viene antes que '2' según la posición del valor Unicode.
+
+const cosas = ['word', 'Word', '1 Word', '2 Words'];
+cosas.sort(); // ['1 Word', '2 Words', 'Word', 'word']
+// En Unicode, los números vienen antes que las letras mayúsculas
+// y estas vienen antes que las letras minúsculas.
+
+// Si se provee compareFunction, los elementos del array son ordenados
+// de acuerdo al valor que retorna dicha función de comparación. Siendo
+// a y b dos elementos comparados, entonces:
+
+//TODO Si compareFunction(a, b) es menor que 0, se sitúa a en un indice
+//TODO menor que b. Es decir, a viene primero.
+
+//TODO Si compareFunction(a, b) retorna 0, se deja a y b sin cambios
+//TODO entre ellos, pero ordenados con respecto a todos los elementos
+//TODO diferentes. Nota: el estandar ECMAscript no garantiza este
+//TODO comportamiento, por esto no todos los navegadores (p.ej.  
+//TODO Mozilla en versiones que datan hasta el 2003) respetan esto.
+
+//TODO Si compareFunction(a, b) es mayor que 0, se sitúa b en un indice
+//TODO menor que a.
+
+//TODO compareFunction(a, b) siempre debe retornar el mismo valor dado
+//TODO un par especifico de elementos a y b como sus argumentos. 
+//TODO Si se retornan resultados inconsistentes entonces el orden de 
+//TODOordenamiento es indefinido.
+
+
+//* Entonces, la función de comparación tiene la siguiente forma:
+
+function compare(a, b) {
+    if ('a es menor que b según criterio de ordenamiento') {
+      return -1;
+    }
+    if ('a es mayor que b según criterio de ordenamiento') {
+      return 1;
+    }
+    // a debe ser igual b
+    return 0;
+ }
+
+
+//* Para comparar números en lugar de strings, la función de comparación
+//* puede simplemente restar b de a. La siguiente función ordena el array 
+//* de modo ascendente:
+
+const arregloNumeros = [100, 200, 21, 324, 454, 7, 3, 5,1]
+// console.log(arregloNumeros)
+function compareNumbers(a, b) {
+    return a - b;
+}
+// console.log(arregloNumeros.sort(compareNumbers))
+
+
+
+//* El metodo sort puede ser usado convenientemente con function
+//* expressions (y closures):
+
+const numbers2 = [4, 2, 5, 1, 3]
+// console.log(numbers2)
+numbers2.sort(function(a, b) {
+    return a -b 
+})
+// console.log(numbers2)
+
+
+//* Los objectos pueden ser ordenados por el valor de una de sus
+//* propiedades.
+
+const items = [
+    { name: 'Edward', value: 21 },
+    { name: 'Sharpe', value: 37 },
+    { name: 'And', value: 45 },
+    { name: 'The', value: -12 },
+    { name: 'Magnetic', value: 13 },
+    { name: 'Zeros', value: 37 }
+  ];
+// console.log(items)
+items.sort(function (a, b) {
+if (a.name > b.name) {
+    return 1;
+}
+if (a.name < b.name) {
+    return -1;
+}
+// a must be equal to b
+return 0;
+});
+// console.log(items)
+
+//! Ejemplo mio propuesto sort()
+
+const celulares = [
+    { modelo: 'iphone', precio:12000 },
+    { modelo: 'samsung', precio:8000 },
+    { modelo: 'xiaomi', precio:5000 },
+    { modelo: 'MotoG', precio:7000 },
+    { modelo: 'Honor', precio:13000 },
+]
+// console.log(celulares)
+function ordenarPrecios(a, b){
+    if(a.precio > b.precio) {
+        return 1
+    }
+    if(a.precio < b.precio) {
+        return -1
+    }
+    return 0
+}
+// console.log(celulares.sort(ordenarPrecios))
+
+
+
+
+
+//* un array de elementos string, sin especificar
+//* una funcion de comparación
+
+const arr9 = ['a', 'b', 'Z', 'Aa', 'AA']
+//           [ 'AA', 'Aa', 'Z', 'a', 'b' ]
+arr9.sort()
+// console.log(arr9)
+
+
+
+//* un array de elementos numericos, sin la funcion 
+//* de comparacion
+
+const arr10 = [40, 1, 5, 200]
+//            [ 1, 200, 40, 5 ]
+// console.log(arr10.sort())
+
+
+
+//* Un array de elementos numéricos, usando una función
+//* de comparación:
+const arr11 = [40, 1, 5, 200]
+function comparar2(a, b){ return a - b }
+// console.log(arr11.sort(comparar2))
+
+
+
+//* Creando, mostrando y ordenando un array
+const arr12 = ['80', '9', '700', 40, 1, 5, 200];
+function comparar(a, b) {
+  return a - b;
+}
+// console.log('original:', arr12.join());
+// console.log('ordenado sin función:', arr12.sort());
+// console.log('ordenado con función:', arr12.sort(comparar));
+
+
+
+//* Ordenando caracteres no ASCII
+// Para ordenar strings con characters no ASCII
+// , i.e. strings con caracteres con acento 
+// (e, é, è, a, ä, etc.), strings de lenguajes diferentes
+//  al inglés: use String.localeCompare. Esta función puede
+// comparar esos caracteres para que aparezcan en el orden correcto.
+const items3 = ['réservé', 'premier', 'cliché', 'communiqué', 'café', 'adieu'];
+items3.sort(function (a, b) {
+  return a.localeCompare(b);
+});
+
+// items3 is ['adieu', 'café', 'cliché', 'communiqué', 'premier', 'réservé']
+
+
+//* Ordenando con map
+// el array a ordenar
+var list = ['Delta', 'alpha', 'CHARLIE', 'bravo'];
+
+// array temporal contiene objetos con posición y valor de ordenamiento
+var mapped = list.map(function(el, i) {
+  return { index: i, value: el.toLowerCase() };
+})
+// console.log('Imprimiendo lista mapped: ', mapped)
+// ordenando el array mapeado que contiene los valores reducidos
+mapped.sort(function(a, b) {
+  if (a.value > b.value) {
+    return 1;
+  }
+  if (a.value < b.value) {
+    return -1;
+  }
+  return 0;
+});
+// console.log('Imprimiendo lista mapped con sort: ', mapped)
+// contenedor para el orden resultante
+var result = mapped.map(function(el){
+  return list[el.index];
+});
+
+// console.log('Imprimiendo lista result con map: ', result)
+
+
+
+//*****************************
+
+
+
+//? spliece()
+// El método splice() cambia el contenido de un array
+// eliminando elementos existentes y/o agregando nuevos elementos.
+// array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
+//! item1, item2 ...
+// Los elementos que se agregarán al array, empezando en
+// el índice start. Si no se especifica ningún elemento,
+// splice() solamente eliminará elementos del array.
+const months = ['Jan', 'March', 'Abril', 'June']
+// indicePosicionado/ NelementosAEliminar / Remplaza por
+months.splice(1, 0, 'Feb')
+//TODO ['Jan', 'Feb', 'March', 'Abril', 'June']
+
+months.splice(4, 1, 'May')
+//TODO ['Jan', 'Feb', 'March', 'Abril', 'May']
+
+
+
+//* Eliminando 1 elemento desde le indice 3
+const myFish = ['Angel', 'Clown', 'Drum', 'Mandarin', 'Sturgeon']
+let remove = myFish.splice(3, 1)
+//TODO ['Angel', 'Clown', 'Drum', 'Sturgeon']
+
+
+//* Elimina 1 elemento desde indice 2 e inserta "Halo"
+const videoGames = ['Free fire', 'Fortnite', 'Mario', 'FIFA']
+let removeVideoGame = videoGames.splice(2, 1, 'Halo')
+//TODO ['Free fire', 'Fortnite', 'Mario', 'FIFA']
+
+
+//* Eliminando 1 elemento desde el indice -2
+const fruitsBag = ['Manzana', 'Uva', 'Mango', 'Pera']
+let removeFruits = fruitsBag.splice(0, 2, 'Durazno', 'Fresa')
+//TODO ['Manzana', 'Uva', 'Mango', 'Pera']
+
+
+
+//* Elimnando 2 elemento desde el indice 2 
+const myDrinks = ['Sprite', 'Fanta','Mazanita', 'squart', 'Red']
+let removeDrinks = myDrinks.splice(myDrinks.length - 3, 2)
+//TODO ['Sprite', 'Fanta','Red']
+
+
+//* Eliminando 1 elemento desde el indice -2
+const myNumbers = [0, 1, 2, 3, 4, 5 ,6]
+let removeNumber = myNumbers.splice(-2, 1)
+//TODO removeNumber = [5]
+
+
+//* Eliminando todos los elementos tras el indice 2
+const arrayPets = ['Dog', 'Fish', 'Cat', 'Bird']
+let removePets = arrayPets.splice(2)
+//TODO arrayPets = ['Dog', 'Fish']
+//TODO removePets = ['cat', 'Bird']
+
+
+
+//*****************************
+
+
+//? toString()
+// El método toString() devuelve una cadena de caracteres
+// representando el array especificado y sus elementos.
+
+const array10 = [1, 2, 'a', 'la']
+// console.log(array10.toString())
+//TODO "1,2,a,la"
+
+
+
+//*****************************
+
+
+//? unshift()
+// El método unshift() agrega uno o más elementos al inicio
+// del array, y devuelve la nueva longitud del array.
+
+const arrayNumbers = [1, 2, 3]
+// console.log(arrayNumbers.unshift(4, 5))
+// 5, el metodo unshift retorna el lenght del array
+
+arrayNumbers.unshift(-2, -1)
+arrayNumbers.unshift([-3])
+// console.log(arrayNumbers)
+
