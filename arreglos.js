@@ -54,25 +54,230 @@ arr.length = 5
 // printEntries(arr)
 
 
-//*****************************
-
-//? isArray()
-// Apara saber si es un arreglo 
-// console.log(Array.isArray(arr))
-
 
 //*****************************
 
-//? express operator
-// Concatenar un arreglo con otro
-let arr1 = ['a', 'b', 'c']
-let arr2 = ['d', 'e', 'f']
 
-let arr3 = [...arr1, ...arr2]
-// console.log(arr3)
+//? concat()
+// El método concat() se usa para unir dos o más arrays
+// . Este método no cambia los arrays existentes, 
+// sino que devuelve un nuevo array.
+// var nuevo_array = viejo_array.concat(valor1[, valor2[, ...[, valorN]]])
+//* Concatenando dos arrays
+const letters = ['a', 'b', 'c']
+const numbers6 = [1, 2, 3]
+
+let concatLetNum = letters.concat(numbers6)
+// console.log(concatLetNum);
+
+
+
+//* Concatenando tres arrays
+const num1 = [1, 2, 3]
+const num2 = [4, 5, 6]
+const num3 = [7, 8, 9]
+ 
+const doneNumbers = num1.concat(num2, num3)
+//TODO [1, 2, 3, 4, 5, 6, 7, 8, 9]
+// console.log(doneNumbers)
+
+
+
+//* Concatenando valores de un array
+const alpha1 = ['a', 'b', 'c']
+const alphaNumeric = alpha1.concat(1, [2, 3])
+//TODO ['a', 'b', 'c', 1, 2, 3]
+// console.log(alphaNumeric)
+
+
+
+//* Concatenando arrays anidados
+let arrNum1 = [[1]]
+let arrNum2 = [2, [3]]
+
+let nums = arrNum1.concat(arrNum2)
+//TODO [[1], 2, [3]]
+// console.log(nums)
+
+// modifica el primer elemento de arrNum1
+arrNum1[0].push(4)
+// console.log(nums)
+
 
 
 //*****************************
+
+
+
+//? copyWithin()
+//! modifica al arreglo origial sin hacer copia
+// Nos permite corta una seccion dentro de ese arreglo
+// y este retorna uno nuevo, indicando desde que indice
+// (Ubicar en posicion, empieza, termina pero sin incluirlo) 
+// arr.copyWithin(target)
+// arr.copyWithin(target, start)
+// arr.copyWithin(target, start, end)
+
+
+const array13 = ['a', 'b', 'c', 'd', 'e'];
+
+// copia del index 0 el elemento del index 3
+// console.log(array13.copyWithin(0, 3, 4));
+// expected output: Array ["d", "b", "c", "d", "e"]
+
+// copia del index 1 todos los elementos del index 3 hasta el final
+// console.log(array13.copyWithin(1, 3));
+// expected output: Array ["d", "d", "e", "d", "e"]
+
+
+[1, 2, 3, 4, 5].copyWithin(-2);
+// [1, 2, 3, 1, 2]
+
+[1, 2, 3, 4, 5].copyWithin(0, 3);
+// [4, 5, 3, 4, 5]
+
+[1, 2, 3, 4, 5].copyWithin(0, 3, 4);
+// [4, 2, 3, 4, 5]
+
+[1, 2, 3, 4, 5].copyWithin(-2, -3, -1);
+// [1, 2, 3, 3, 4]
+
+
+
+//*****************************
+
+  
+
+//? entries() // entradas
+// El método entries() retorna un nuevo objeto Array
+// Iterator que contiene los pares clave/valor para cada
+// índice de la matriz.
+// arr.entries()
+
+const array14 = ['a', 'b', 'c']
+let iterator14 = array14.entries()
+// console.log(iterator14.next());
+// { value: [ 0, 'a' ], done: false }
+
+// console.log(iterator14.next().value);
+// expected output: Array [0, "a"]
+
+// console.log(iterator14.next().value);
+// expected output: Array [1, "b"]
+
+
+
+//* usando un bucle for...of
+const  lett = ['a', 'b', 'c']
+let itera = lett.entries()
+
+for(let e of itera) {
+  // console.log(e)
+}
+
+
+
+//*****************************
+
+
+
+//? every()
+// Determina si todos los elementos en el
+// array satisfacen una condición.
+// arr.every(callback(element[, index[, array]])[, thisArg])
+
+const isBelowThreshold = (currentValue) => currentValue < 40;
+
+const array15 = [1, 30, 39, 29, 10, 13];
+
+// console.log(array15.every(isBelowThreshold));
+// expected output: true
+
+
+
+//*****************************
+
+
+
+//? fill() // llenar
+// El método fill() cambia todos los elementos en un arreglo
+// por un valor estático, desde el índice start 
+// (por defecto 0) hasta el índice end (por defecto 
+// array.length). Devuelve el arreglo modificado.
+// (valor, empieza, termina pero sin incluirlo) 
+// arr.fill(value[, start = 0[, end = this.length]])
+
+const array16 = [1, 2, 3, 4];
+
+// fill with 0 from position 2 until position 4
+// console.log(array16.fill(0, 2, 4));
+// expected output: [1, 2, 0, 0]
+
+// fill with 5 from position 1
+// console.log(array16.fill(5, 0));
+// expected output: [1, 5, 5, 5]
+
+// console.log(array16.fill(6));
+// expected output: [6, 6, 6, 6]
+
+//* Llenando un arreglo con fill
+const arrayFill = Array(100).fill(5)
+// console.log(arrayFill)
+
+
+
+//*****************************
+
+
+
+//? filter()
+// El método filter() crea un nuevo array con todos los
+// elementos que cumplan la condición implementada por
+// la función dada.
+// var newArray = arr.filter(callback(currentValue[, index[, array]])[, thisArg])
+
+const words2 = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+const resWords = words2.filter(word => word.length > 6);
+
+// console.log(resWords);
+// expected output: Array ["exuberant", "destruction", "present"]
+
+
+
+//* Filtrando entradas invalidas desde un JSON
+const array17 = [
+  { id:15 },
+  { id:-1 },
+  { id:0 },
+  { id:3 },
+  { id:12.2 },
+  {  },
+  { id:null },
+  { id:NaN },
+  { id:'undefined' }
+]
+
+let entradasInvalidas = 0
+
+function filtrarPorID(obj){
+  if('id' in obj && typeof(obj.id) === 'number' && !isNaN(obj.id)){
+    return true
+  } else {
+    entradasInvalidas++
+    return false
+  }
+}
+
+
+let arrPorID = array17.filter(filtrarPorID)
+// console.log(arrPorID)
+// [{ id: 15 }, { id: -1 }, { id: 0 }, { id: 3 }, { id: 12.2 }]
+// console.log('Número de Entradas Invalidas = ', entradasInvalidas);
+// 4
+
+
+//*****************************
+
 
 
 //? find()
@@ -121,11 +326,8 @@ const inventario = [
 function esCereza(fruta) { // fruta es el elemento
     return fruta.nombre === 'cerezas';
 }
-// console.log(inventario.find(esCereza)); //TODO al metodo find(), le pasamos como parametro una "funcion"
+// console.log(inventario.find(esCereza)); 
 // { nombre: 'cerezas', cantidad: 5 }
-
-
-
 
 
 
@@ -183,7 +385,9 @@ array1.find(function(value, index) {
 })
 
 
+
 //*****************************
+
 
 
 //? findIndex()
@@ -193,7 +397,9 @@ const listLargeNumber = (element) => element > 13
 // console.log(arr4.findIndex(listLargeNumber))
 
 
+
 //*****************************
+
 
 
 //? forEach()
@@ -207,7 +413,7 @@ const listLargeNumber = (element) => element > 13
 //sido eliminados o que no hayan sido inicializados (Ej. sobre arrays sparse)
 
 function logArrayElements(element, index, array) {
-    // console.log("a[" + index + "] = " + element);
+  // console.log("a[" + index + "] = " + element);
 }
 // Nótese que se evita el 2° índice ya que no hay ningún elemento en esa posición del array
 [2, 5, , 9].forEach(logArrayElements);
@@ -223,10 +429,10 @@ function logArrayElements(element, index, array) {
 // callback(currentValue, index, array)
 let words = ['Uno', 'Dos', 'Tres', 'Cuatro']
 words.forEach(function (word) {
-    // console.log(word);
-    if (word === 'Dos') {
-        words.shift()
-    }
+  // console.log(word);
+  if (word === 'Dos') {
+      words.shift()
+  }
 });
 //TODO Uno, Dos, Cuatro
 
@@ -287,7 +493,22 @@ const actualizaColeccionVegetales = (vegetales, vegetal) => {
 // console.log(actualizaColeccionVegetales(vegetales, 'Zanahoria'))
 
 
+
+
 //*****************************
+
+
+//? isArray()
+// Apara saber si es un arreglo 
+// console.log(Array.isArray(arr))
+Array.isArray([1, 2, 3]);  // true
+Array.isArray({foo: 123}); // false
+Array.isArray('foobar');   // false
+Array.isArray(undefined);  // false
+
+
+//*****************************
+
 
 
 //? join()
@@ -336,6 +557,19 @@ let sparseKeys = Object.keys(arr6)
 let denseKeys = [...arr6.keys()]
 // console.log(sparseKeys)
 // console.log(denseKeys)
+
+
+//*****************************
+
+
+//? spread operator
+// Concatenar un arreglo con otro
+let arr1 = ['a', 'b', 'c']
+let arr2 = ['d', 'e', 'f']
+
+let arr3 = [...arr1, ...arr2]
+// console.log(arr3)
+
 
 
 //*****************************
@@ -611,6 +845,25 @@ const reversed = array8.reverse();
 // console.log('array8:', array8);
 //TODO expected output: "array8:" Array ["three", "two", "one"]
 
+
+
+//*****************************
+
+
+//? shift()
+// El método shift() elimina el primer elemento del
+// array y lo retorna. Este método modifica la longitud
+// del array.
+
+var miPescado = ['ángel', 'payaso', 'mandarín', 'cirujano'];
+
+// console.log('miPescado antes: ' + miPescado);
+// "miPescado antes: ángel,payaso,mandarín,cirujano"
+var eliminadoPes = miPescado.shift();
+// console.log('miPescado después: ' + miPescado);
+// "miPescado after: payaso,mandarín,cirujano"
+// console.log('Elemento eliminado: ' + eliminadoPes);
+// "Elemento eliminado: ángel"
 
 
 //*****************************
@@ -993,4 +1246,74 @@ const arrayNumbers = [1, 2, 3]
 arrayNumbers.unshift(-2, -1)
 arrayNumbers.unshift([-3])
 // console.log(arrayNumbers)
+
+
+//*****************************
+
+//? values()
+// El método values() devuelve un nuevo objeto Array
+// Iterator que contiene los valores para cada índice
+// del array.
+// arr.values()
+
+
+const array11 = ['w', 'y', 'k', 'o', 'p']
+let iterator11 = array11.values()
+
+
+//* Devemos indicar .value para ingresar
+//* a la propiedad del objeto
+// console.log(iterator11.next())
+//TODO { value:"w", done:false }
+// console.log(iterator11.next().value)
+//TODO y
+// console.log(iterator11.next().value)
+// console.log(iterator11.next().value)
+// console.log(iterator11.next().value)
+
+
+//* Iteracion usando un bucle for...of
+const array12 = ['w', 'y', 'k', 'o', 'p']
+let iterator12 = array12.values()
+
+for(let letra of iterator12) {
+  // console.log(letra)
+}
+
+
+
+//*****************************
+
+
+
+
+//*****************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
