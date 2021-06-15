@@ -181,3 +181,47 @@
 
 
 //******************* METODOS  ************************
+
+//? Object.assign()
+
+// const target = { a: 1, b: 2 };
+// const source = { b: 4, c: 5 };
+
+// const returnedTarget = Object.assign(target, source);
+
+// console.log(target);
+// expected output: Object { a: 1, b: 4, c: 5 }
+
+// console.log(returnedTarget);
+// expected output: Object { a: 1, b: 4, c: 5 }
+
+
+
+// const a = { name:'Eduardo' }
+// const copyObj = Object.assign({}, a)
+// copyObj.age = 20
+// console.log('copyObj es igual a: ',copyObj)
+// console.log('a es igual a: ',a)
+
+
+
+
+//?  Object.create()
+
+// const person = {
+//     isHuman: false,
+//     printIntroduction: function() {
+//       console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+//     }
+// };  
+// const me = Object.create(person);
+// me.name = 'Matthew'; // "name" is a property set on "me", but not on "person"
+// me.isHuman = true; // inherited properties can be overwritten
+
+// me.printIntroduction();
+// person.printIntroduction();
+// expected output: "My name is Matthew. Am I human? true"
+// expected output: "My name is undefined. Am I human? false"
+
+
+
