@@ -1,18 +1,18 @@
+console.clear();
+console.log('====== Break ======');
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-
-try {
-
-    //* En el try se agrega el código a evaluar
-    console.log('Hola soy un try');
-    noExisto;
-} catch( err ) {
-
-    //! Si hay un error catch captura cualquier error por try
-    console.log( err );    
-} finally {
-
-    //? Finally se ejecutara siempre la final de un bloque try...catch
-    console.log('Hola soy un finally');
+for(let i=0; i <10; i++) {
+    if( i === 5) {
+        break;
+    }
+    console.log( numbers[i] );
 }
 
-//* Usualemnte podemos usar este tema para funciónes async-await
+console.log('====== continue ======');
+for(let j=0; j <10; j++) {
+    if( j === 5) {
+        continue;
+    }
+    console.log( numbers[j] );
+}
